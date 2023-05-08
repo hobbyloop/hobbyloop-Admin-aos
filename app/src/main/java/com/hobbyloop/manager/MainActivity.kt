@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
             HobbyloopmanageraosTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background,
+                    color = MaterialTheme.colorScheme.background
                 ) {
                     HobbyLoopScreen()
                 }
