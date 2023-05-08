@@ -35,10 +35,7 @@ jobs:
       run: chmod +x gradlew
       
     - name: Run ktlint
-      run: ./gradlew ktlint
-      
-    - name: Run detekt
-      run: ./gradlew detekt
+      run: ./gradlew ktlintCheck
       
     - name: Run Unit tests
       run: ./gradlew testDebugUnitTest

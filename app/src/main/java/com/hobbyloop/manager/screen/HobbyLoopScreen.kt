@@ -4,20 +4,16 @@ import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.google.accompanist.web.AccompanistWebChromeClient
-import com.google.accompanist.web.AccompanistWebViewClient
-import com.google.accompanist.web.WebView
-import com.google.accompanist.web.rememberWebViewNavigator
-import com.google.accompanist.web.rememberWebViewState
+import com.google.accompanist.web.*
 import com.hobbyloop.manager.data.Constants.BASE_URL
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun HobbyLoopScreen(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     val webViewState = rememberWebViewState(
-        url = BASE_URL,
+        url = BASE_URL
     )
 
     val webViewClient = AccompanistWebViewClient()
@@ -38,7 +34,7 @@ fun HobbyLoopScreen(
                     javaScriptCanOpenWindowsAutomatically = true // JavaScript로 새창 실행 허용
                 }
             }
-        },
+        }
     )
 
     BackHandler {
@@ -47,5 +43,3 @@ fun HobbyLoopScreen(
         }
     }
 }
-
-
