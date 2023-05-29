@@ -1,4 +1,4 @@
-package com.hobbyloop.manager
+package com.hobbyloop.manager.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.hobbyloop.manager.screen.HobbyLoopScreen
 import com.hobbyloop.manager.ui.theme.HobbyloopmanageraosTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,9 +18,9 @@ class MainActivity : ComponentActivity() {
             HobbyloopmanageraosTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.background,
                 ) {
-                    HobbyLoopScreen()
+                    AdminScreen()
                 }
             }
         }

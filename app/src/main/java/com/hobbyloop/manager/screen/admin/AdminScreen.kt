@@ -9,7 +9,7 @@ import com.hobbyloop.manager.data.Constants.BASE_URL
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun HobbyLoopScreen(
+fun AdminScreen(
     modifier: Modifier = Modifier
 ) {
     val webViewState = rememberWebViewState(
