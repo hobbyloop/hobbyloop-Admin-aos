@@ -10,4 +10,4 @@ import dagger.hilt.android.HiltAndroidApp
  *   @Email ows3090@sk.com
  */
 @HiltAndroidApp
-class HobbyLoopManagerApplication : Application()
+class HobbyLoopAdminApplication : Application()
