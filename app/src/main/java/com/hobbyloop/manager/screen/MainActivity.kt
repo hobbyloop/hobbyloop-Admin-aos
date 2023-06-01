@@ -4,10 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.hobbyloop.manager.ui.theme.HobbyloopmanageraosTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.hobbyloop.manager.screen.login.LoginScreen
+import com.hobbyloop.manager.ui.theme.HobbyloopAdminTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,13 +18,25 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            HobbyloopmanageraosTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background,
-                ) {
-                    AdminScreen()
-                }
+            HobbyLoopAdminApp()
+        }
+    }
+}
+
+@Composable
+private fun HobbyLoopAdminApp() {
+    HobbyloopAdminTheme {
+        NavHost(
+            navController = rememberNavController(),
+            startDestination = NavDestination.Login.route,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            composable(route = NavDestination.Login.route) {
+                LoginScreen()
+            }
+
+            composable(route = NavDestination.Home.route) {
+                AdminScreen()
             }
         }
     }

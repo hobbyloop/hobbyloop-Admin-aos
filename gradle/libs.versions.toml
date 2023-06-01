@@ -46,5 +46,5 @@ androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
 [bundles]
-androidx-compose = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-material"]
+androidx-compose = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-material", "androidx-navigation-compose"]
 androidx-compose-test = ["androidx-compose-ui-tooling", "androidx-compose-ui-test-manifest"]
