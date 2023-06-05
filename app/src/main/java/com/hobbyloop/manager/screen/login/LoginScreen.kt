@@ -17,10 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hobbyloop.manager.R
-import com.hobbyloop.manager.ui.theme.Gray
-import com.hobbyloop.manager.ui.theme.Green
-import com.hobbyloop.manager.ui.theme.Orange
-import com.hobbyloop.manager.ui.theme.Yellow
+import com.hobbyloop.manager.ui.theme.*
 import com.hobbyloop.manager.util.toSp
 
 @Composable
@@ -49,9 +46,7 @@ fun LoginScreen() {
                 .padding(horizontal = 24.dp)
                 .heightIn(min = 52.dp),
             shape = RoundedCornerShape(10.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Yellow
-            )
+            colors = ButtonDefaults.buttonColors(containerColor = Yellow)
         ) {
             Row(
                 horizontalArrangement = Arrangement.Center,
@@ -67,6 +62,8 @@ fun LoginScreen() {
                     modifier = Modifier.padding(start = 6.24.dp),
                     color = Color.Black,
                     fontSize = 14.dp.toSp(),
+                    fontFamily = pretendard,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
         }
@@ -97,6 +94,8 @@ fun LoginScreen() {
                     modifier = Modifier.padding(start = 11.44.dp),
                     color = Color.Black,
                     fontSize = 14.dp.toSp(),
+                    fontFamily = pretendard,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
         }
@@ -127,6 +126,8 @@ fun LoginScreen() {
                     modifier = Modifier.padding(start = 6.96.dp),
                     color = Color.White,
                     fontSize = 14.dp.toSp(),
+                    fontFamily = pretendard,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
         }
@@ -138,6 +139,7 @@ fun LoginScreen() {
                 .padding(top = 24.dp),
             color = Orange,
             fontSize = 16.dp.toSp(),
+            fontFamily = pretendard,
             fontWeight = FontWeight.Bold
         )
     }
