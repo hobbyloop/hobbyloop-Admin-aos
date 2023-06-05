@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "hobbyloop-manager-aos"
-include ':app'
+include(":app")

@@ -5,11 +5,11 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.google.accompanist.web.*
-import com.hobbyloop.manager.data.Constants.BASE_URL
+import com.hobbyloop.manager.util.Constants.BASE_URL
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun HobbyLoopScreen(
+fun AdminScreen(
     modifier: Modifier = Modifier
 ) {
     val webViewState = rememberWebViewState(

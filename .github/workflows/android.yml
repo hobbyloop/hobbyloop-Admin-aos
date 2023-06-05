@@ -44,5 +44,5 @@ jobs:
       uses: asadmansr/android-test-report-action@v1.2.0   
       if: ${{ always() }}
       
-    - name: Build assemble Release APK
-      run: ./gradlew assembleRelease
+    - name: Build debug APK
+      run: ./gradlew assembleDebug --stacktrace
