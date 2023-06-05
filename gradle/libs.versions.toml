@@ -1,7 +1,7 @@
 [versions]
 ## Plugins
 androidGradlePlugin = "7.3.1"
-kotlinAndroidPlugin = "1.8.21"
+kotlinAndroidPlugin = "1.7.20"
 hiltAndroidPlugin = "2.44"
 gradleKtlintPlugin = "11.3.1"
 
@@ -16,7 +16,7 @@ dagger-hilt = "2.44"
 junit = "4.13.2"
 androidx-junit = "1.1.5"
 androidx-espresso-core = "3.5.1"
-
+timber = "5.0.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -44,6 +44,7 @@ androidx-espresso-core = { group = "androidx.test.ext", name = "espresso-core", 
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 
 [bundles]
 androidx-compose = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-material", "androidx-navigation-compose"]

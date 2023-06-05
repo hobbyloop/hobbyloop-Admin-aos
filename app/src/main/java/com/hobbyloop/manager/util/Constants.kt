@@ -1,4 +1,4 @@
-package com.hobbyloop.manager.data
+package com.hobbyloop.manager.util
 
 /**
  *   @Author Wonseok Oh
