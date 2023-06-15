@@ -52,16 +52,17 @@ fun LoginScreen(
     navController: NavController = rememberNavController(),
     loginViewModel: LoginViewModel = hiltViewModel()
 ) {
-
-    LaunchedEffect(loginViewModel){
+    LaunchedEffect(loginViewModel) {
         loginViewModel.loginResult.collectLatest {
-            when(it){
+            when (it) {
                 is LoginResult.Success -> {
                     navController.navigate(HobbyLoopDestination.Home.route)
                 }
+
                 is LoginResult.Failure -> {
                     // TODO Toast or Dialog
                 }
+
                 else -> {
                     // TODO Cancel Log
                 }

@@ -9,5 +9,5 @@ package com.hobbyloop.manager.screen.login
 sealed class LoginResult<out T> {
     data class Success<T>(val data: T) : LoginResult<T>()
     data class Failure(val throwable: Throwable? = null) : LoginResult<Nothing>()
-    object Cancel: LoginResult<Nothing>()
+    object Cancel : LoginResult<Nothing>()
 }
