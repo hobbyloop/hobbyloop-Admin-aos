@@ -29,6 +29,9 @@ android {
 
         buildConfigField("String", "KAKAO_APP_KEY", gradleLocalProperties(rootDir).getProperty("KAKAO_APP_KEY"))
         resValue("string", "KAKAO_REDIRECT_URL_SCHEME", "kakao${gradleLocalProperties(rootDir).getProperty("KAKAO_APP_KEY")}")
+
+        buildConfigField("String", "NAVER_CLIENT_ID", gradleLocalProperties(rootDir).getProperty("NAVER_CLIENT_ID"))
+        buildConfigField("String", "NAVER_CLIENT_SECRET", gradleLocalProperties(rootDir).getProperty("NAVER_CLIENT_SECRET"))
     }
 
     buildTypes {
@@ -69,6 +72,8 @@ dependencies {
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.timber)
     implementation(libs.kakao.user)
+    implementation(libs.naver.oauth)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
