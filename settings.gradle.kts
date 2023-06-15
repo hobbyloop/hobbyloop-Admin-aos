@@ -3,7 +3,6 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        maven(url = "https://devrepo.kakao.com/nexus/content/groups/public/")
     }
 }
 dependencyResolutionManagement {
@@ -11,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven(url = "https://devrepo.kakao.com/nexus/content/groups/public/")
     }
 }
 rootProject.name = "hobbyloop-manager-aos"
