@@ -4,4 +4,5 @@
     <string name="login_google">구글로 로그인</string>
     <string name="login_naver">네이버로 로그인</string>
     <string name="register_center">입점 신청하기</string>
+    <string name="naver_login_client_name">하비루프 업체용</string>
 </resources>
