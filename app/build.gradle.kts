@@ -28,7 +28,7 @@ android {
         }
 
         buildConfigField("String", "KAKAO_APP_KEY", gradleLocalProperties(rootDir).getProperty("KAKAO_APP_KEY"))
-        resValue("string", "KAKAO_APP_KEY", gradleLocalProperties(rootDir).getProperty("KAKAO_APP_KEY"))
+        resValue("string", "KAKAO_REDIRECT_URL_SCHEME", "kakao${gradleLocalProperties(rootDir).getProperty("KAKAO_APP_KEY")}")
     }
 
     buildTypes {
