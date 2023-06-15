@@ -1,11 +1,11 @@
 package com.hobbyloop.manager.screen
 
-sealed class NavDestination(
+sealed class HobbyLoopDestination(
     val route: String
 ) {
-    object Login : NavDestination(LOGIN)
+    object Login : HobbyLoopDestination(LOGIN)
 
-    object Home : NavDestination(HOME)
+    object Home : HobbyLoopDestination(HOME)
 
     companion object {
         private const val LOGIN = "Login"

@@ -27,16 +27,17 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun HobbyLoopAdminApp() {
     HobbyloopAdminTheme {
+        val navHostController = rememberNavController()
         NavHost(
-            navController = rememberNavController(),
-            startDestination = NavDestination.Login.route,
+            navController = navHostController,
+            startDestination = HobbyLoopDestination.Login.route,
             modifier = Modifier.fillMaxSize()
         ) {
-            composable(route = NavDestination.Login.route) {
-                LoginScreen()
+            composable(route = HobbyLoopDestination.Login.route) {
+                LoginScreen(navHostController)
             }
 
-            composable(route = NavDestination.Home.route) {
+            composable(route = HobbyLoopDestination.Home.route) {
                 AdminScreen()
             }
         }
