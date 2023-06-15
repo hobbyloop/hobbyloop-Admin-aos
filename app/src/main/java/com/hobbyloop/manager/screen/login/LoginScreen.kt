@@ -42,9 +42,12 @@ import com.hobbyloop.manager.util.toSp
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
+import com.navercorp.nid.NaverIdLoginSDK
+import com.navercorp.nid.oauth.OAuthLoginCallback
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
+import timber.log.Timber
 import kotlin.coroutines.resume
 
 @Composable
@@ -52,26 +55,9 @@ fun LoginScreen(
     navController: NavController = rememberNavController(),
     loginViewModel: LoginViewModel = hiltViewModel()
 ) {
-    LaunchedEffect(loginViewModel) {
-        loginViewModel.loginResult.collectLatest {
-            when (it) {
-                is LoginResult.Success -> {
-                    navController.navigate(HobbyLoopDestination.Home.route)
-                }
-
-                is LoginResult.Failure -> {
-                    // TODO Toast or Dialog
-                }
-
-                else -> {
-                    // TODO Cancel Log
-                }
-            }
-        }
-    }
-
-    val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+
     Column(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.ic_logo),
@@ -123,7 +109,7 @@ fun LoginScreen(
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp)
@@ -155,7 +141,11 @@ fun LoginScreen(
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                coroutineScope.launch {
+                    loginViewModel.sendLoginResult(fetchNaverLogin(context))
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp)
@@ -176,7 +166,7 @@ fun LoginScreen(
                 )
 
                 Text(
-                    text = stringResource(id = R.string.login_kakao),
+                    text = stringResource(id = R.string.login_naver),
                     modifier = Modifier.padding(start = 6.96.dp),
                     color = Color.White,
                     fontSize = 14.dp.toSp(),
@@ -196,6 +186,24 @@ fun LoginScreen(
             fontFamily = pretendard,
             fontWeight = FontWeight.Bold
         )
+    }
+
+    LaunchedEffect(loginViewModel) {
+        loginViewModel.loginResult.collectLatest {
+            when (it) {
+                is LoginResult.Success -> {
+                    navController.navigate(HobbyLoopDestination.Home.route)
+                }
+
+                is LoginResult.Failure -> {
+                    // TODO Toast or Dialog
+                }
+
+                else -> {
+                    // TODO Cancel Log
+                }
+            }
+        }
     }
 }
 
@@ -227,6 +235,26 @@ private suspend fun fetchKaKaoLogin(context: Context) = suspendCancellableCorout
             }
         }
     }
+}
+
+private suspend fun fetchNaverLogin(context: Context) = suspendCancellableCoroutine { continuation ->
+    NaverIdLoginSDK.authenticate(context, object : OAuthLoginCallback {
+        override fun onError(errorCode: Int, message: String) {
+            onFailure(errorCode, message)
+        }
+
+        override fun onFailure(httpStatus: Int, message: String) {
+            continuation.resume(LoginResult.Failure(Exception(NaverIdLoginSDK.getLastErrorDescription())))
+        }
+
+        override fun onSuccess() {
+            val accessToken = NaverIdLoginSDK.getAccessToken()
+            Timber.i("NaverIdLoginSDK $accessToken")
+            accessToken?.let { token ->
+                continuation.resume(LoginResult.Success(token))
+            }
+        }
+    })
 }
 
 @Preview(showBackground = true)
