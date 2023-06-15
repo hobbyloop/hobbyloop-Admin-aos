@@ -15,11 +15,11 @@ import javax.inject.Inject
  *   @Email ows3090@sk.com
  */
 @HiltViewModel
-class LoginViewModel @Inject constructor(): ViewModel(){
+class LoginViewModel @Inject constructor() : ViewModel() {
     private val _loginResult = MutableSharedFlow<LoginResult<String>>()
     val loginResult = _loginResult.asSharedFlow()
 
-    fun sendLoginResult(loginResult: LoginResult<String>){
+    fun sendLoginResult(loginResult: LoginResult<String>) {
         viewModelScope.launch {
             _loginResult.emit(loginResult)
         }
