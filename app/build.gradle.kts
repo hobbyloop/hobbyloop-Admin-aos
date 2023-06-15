@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.bundles.androidx.compose)
     implementation(libs.accompanist.webview)
     implementation(libs.dagger.hilt.android)
+    implementation(libs.hilt.navigation.compose)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.timber)
     implementation(libs.kakao.user)
