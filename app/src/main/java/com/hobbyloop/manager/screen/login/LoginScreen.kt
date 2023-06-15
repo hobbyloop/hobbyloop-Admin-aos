@@ -238,23 +238,26 @@ private suspend fun fetchKaKaoLogin(context: Context) = suspendCancellableCorout
 }
 
 private suspend fun fetchNaverLogin(context: Context) = suspendCancellableCoroutine { continuation ->
-    NaverIdLoginSDK.authenticate(context, object : OAuthLoginCallback {
-        override fun onError(errorCode: Int, message: String) {
-            onFailure(errorCode, message)
-        }
+    NaverIdLoginSDK.authenticate(
+        context,
+        object : OAuthLoginCallback {
+            override fun onError(errorCode: Int, message: String) {
+                onFailure(errorCode, message)
+            }
 
-        override fun onFailure(httpStatus: Int, message: String) {
-            continuation.resume(LoginResult.Failure(Exception(NaverIdLoginSDK.getLastErrorDescription())))
-        }
+            override fun onFailure(httpStatus: Int, message: String) {
+                continuation.resume(LoginResult.Failure(Exception(NaverIdLoginSDK.getLastErrorDescription())))
+            }
 
-        override fun onSuccess() {
-            val accessToken = NaverIdLoginSDK.getAccessToken()
-            Timber.i("NaverIdLoginSDK $accessToken")
-            accessToken?.let { token ->
-                continuation.resume(LoginResult.Success(token))
+            override fun onSuccess() {
+                val accessToken = NaverIdLoginSDK.getAccessToken()
+                Timber.i("NaverIdLoginSDK $accessToken")
+                accessToken?.let { token ->
+                    continuation.resume(LoginResult.Success(token))
+                }
             }
         }
-    })
+    )
 }
 
 @Preview(showBackground = true)
